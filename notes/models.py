@@ -31,8 +31,8 @@ class Note(TimeStampedModel):
     """
     content = models.TextField(_('Content'))
     public = models.BooleanField(_('Public'), default=True)
-    author = models.ForeignKey(User, blank=True, null=True)
-    content_type = models.ForeignKey(ContentType)
+    author = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey("content_type", "object_id")
 
